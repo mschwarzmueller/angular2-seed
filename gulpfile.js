@@ -48,7 +48,7 @@ gulp.task('bundle-ts', ['build-ts'], function() {
     var builder = new Builder('', 'systemjs.config.js');
 
     builder
-        .buildStatic('app/boot.js', 'outfile.js', { minify: true, sourceMaps: true})
+        .buildStatic('app/boot.js', 'app/bundle.js', { minify: true, sourceMaps: true})
         .then(function() {
             console.log('Build complete');
         })

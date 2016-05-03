@@ -1,13 +1,14 @@
 {
-  "name": "angular2-boilerplate",
+  "name": "angular2-seed",
   "version": "1.0.0",
   "scripts": {
     "lite": "lite-server",
+    "postinstall": "typings install",
     "gulp": "gulp",
     "start": "concurrent \"npm run gulp\" \"npm run lite\" ",
     "typings": "typings"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@angular/common": "2.0.0-rc.0",
     "@angular/compiler": "2.0.0-rc.0",

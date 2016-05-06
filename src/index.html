@@ -1,0 +1,27 @@
+<!doctype>
+<html>
+<head>
+    <base href="/">
+    <title>Angular 2 Boilerplate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="vendor/es6-shim/es6-shim.min.js"></script>
+
+    <script src="vendor/zone.js/dist/zone.js"></script>
+    <script src="vendor/reflect-metadata/Reflect.js"></script>
+    <script src="vendor/systemjs/dist/system.src.js"></script>
+
+    <link rel="stylesheet" href="src/css/app.css">
+
+</head>
+<body>
+<my-app>Loading...</my-app>
+
+<script>
+    System.import('systemjs.config.js').then(function () {
+        System.import('app/main');
+    }).catch(console.error.bind(console));
+</script>
+</body>
+</html>

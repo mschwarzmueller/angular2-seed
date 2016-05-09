@@ -5,11 +5,11 @@
     "lite": "lite-server",
     "postinstall": "typings install",
     "start": "concurrently \"npm run build:dev.watch\" \"npm run lite\" ",
-    "build:prepare": "gulp prepare-serve",
-    "build": "gulp build-prod && gulp compress && gulp clean",
-    "build:dev": "gulp build",
-    "build:bundle": "gulp build && node systemjs.builder.js",
-    "build:dev.watch": "gulp",
+    "build:vendor": "gulp vendor",
+    "build:production": "gulp clean && gulp build && gulp compress",
+    "build:production.bundle": "gulp build --production && node systemjs.builder.js && gulp compress",
+    "build:dev": "gulp clean && gulp build",
+    "build:dev.watch": "gulp clean && gulp",
     "typings": "typings"
   },
   "license": "MIT",
@@ -31,17 +31,21 @@
   "devDependencies": {
     "codelyzer": "0.0.19",
     "concurrently": "^2.0.0",
+    "connect-gzip-static": "^1.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.0.6",
+    "gulp-flatten": "^0.2.0",
     "gulp-gzip": "^1.2.0",
+    "gulp-if": "^2.0.1",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.10.0",
     "lite-server": "^2.1.0",
     "systemjs-builder": "^0.15.16",
     "tslint": "^3.9.0",
-    "typings": "^0.8.1"
+    "typings": "^0.8.1",
+    "yargs": "^4.7.0"
   }
 }

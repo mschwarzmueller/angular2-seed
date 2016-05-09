@@ -35,6 +35,11 @@ gulp.task('build-ts', function () {
         .pipe(gulp.dest(dist + 'app/'));
 });
 
+gulp.task('build-copy', function() {
+    gulp.src([src + 'app/**/*.html', src + 'app/**/*.htm', src + 'app/**/*.css'])
+        .pipe(gulp.dest(dist + 'app/'));
+});
+
 gulp.task('prepare-serve', function() {
 
     // systemjs.config
@@ -72,10 +77,11 @@ gulp.task('prepare-serve', function() {
 
 gulp.task('watch', function () {
     gulp.watch(src + '**/*.ts', ['build-ts']);
+    gulp.watch(src + '**/*.ts', ['build-copy']);
     gulp.watch(src + 'css/**/*.scss', ['build-css']);
     gulp.watch(src + '**/*.html', ['build-html']);
 });
 
-gulp.task('build', ['build-ts', 'build-css']);
+gulp.task('build', ['build-ts', 'build-css', 'build-copy']);
 
 gulp.task('default', ['build', 'watch']);

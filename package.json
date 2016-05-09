@@ -6,8 +6,8 @@
     "postinstall": "typings install",
     "start": "concurrently \"npm run build:watch\" \"npm run lite\" ",
     "build:prepare": "gulp prepare-serve",
-    "build:dev": "gulp build",
-    "build:prod": "gulp build && node systemjs.builder.js",
+    "build": "gulp build",
+    "build:bundle": "gulp build && node systemjs.builder.js",
     "build:watch": "gulp",
     "typings": "typings"
   },
@@ -28,6 +28,7 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "codelyzer": "0.0.19",
     "concurrently": "^2.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
@@ -38,6 +39,7 @@
     "gulp-typescript": "^2.10.0",
     "lite-server": "^2.1.0",
     "systemjs-builder": "^0.15.16",
+    "tslint": "^3.9.0",
     "typings": "^0.8.1"
   }
 }

@@ -7,7 +7,7 @@ const del = require('del');
 var builder = new Builder('', 'systemjs.config.js');
 
 builder
-    .buildStatic('./dist/app/main.js', './dist/app/main.js', { minify: true})
+    .buildStatic('./dist/app/main.js', './src/temp/main.js', { minify: true})
     .then(function() {
         del(['./dist/app/**/*.js', '!./dist/app/main.js']).then(function (paths) {
             console.log('Deleted files and folders:\n', paths.join('\n'));

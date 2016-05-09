@@ -12,6 +12,9 @@ var cssClean = require('gulp-clean-css');
 /* JS & TS */
 var typescript = require('gulp-typescript');
 
+var gzip = require('gulp-gzip');
+var del = require('del');
+
 var tsProject = typescript.createProject('tsconfig.json');
 
 gulp.task('build-css', function () {
@@ -35,9 +38,25 @@ gulp.task('build-ts', function () {
         .pipe(gulp.dest(dist + 'app/'));
 });
 
+gulp.task('build-ts-prod', function () {
+    return gulp.src(src + 'app/**/*.ts')
+        .pipe(typescript(tsProject))
+        .pipe(gulp.dest(src + 'temp/'));
+});
+
 gulp.task('build-copy', function() {
     gulp.src([src + 'app/**/*.html', src + 'app/**/*.htm', src + 'app/**/*.css'])
         .pipe(gulp.dest(dist + 'app/'));
+});
+
+gulp.task('compress', function() {
+    return gulp.src(src + 'temp/**/*.js')
+        .pipe(gzip({append: false}))
+        .pipe(gulp.dest(dist + 'app/'));
+});
+
+gulp.task('clean', function() {
+   return del(src + '/temp');
 });
 
 gulp.task('prepare-serve', function() {
@@ -83,5 +102,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('build', ['build-ts', 'build-css', 'build-copy']);
+
+gulp.task('build-prod', ['build-ts-prod', 'build-css', 'build-copy']);
 
 gulp.task('default', ['build', 'watch']);

@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
     selector: 'my-app',
     template: `
         <h1>Angular 2 Boilerplate</h1>
-        <p>Hello World!</p>
+        <p>Hello World!!</p>
        
     `,
 })

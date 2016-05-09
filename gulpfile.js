@@ -59,7 +59,7 @@ gulp.task('bundle-ts', ['build-ts'], function() {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(appDev + '**/*.ts', ['build-ts', 'bundle-ts']);
+    gulp.watch(appDev + '**/*.ts', ['build-ts']);
     gulp.watch(assetsDev + 'scss/**/*.scss', ['build-css']);
 });
 

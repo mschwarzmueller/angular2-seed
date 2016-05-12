@@ -100,7 +100,7 @@ gulp.task('vendor', function () {
 gulp.task('watch', function () {
     gulp.watch(src + '**/*.ts', ['build-ts']);
     gulp.watch(src + '**/*.scss', ['build-css']);
-    gulp.watch(src + '**/*.(html|htm|css)', ['build-copy']);
+    gulp.watch(src + '**/*.{html,htm,css}', ['build-copy']);
 });
 
 gulp.task('build', ['build-ts', 'build-css', 'build-copy']);

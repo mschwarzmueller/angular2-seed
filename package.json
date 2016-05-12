@@ -4,7 +4,7 @@
   "scripts": {
     "lite": "lite-server",
     "postinstall": "typings install",
-    "start": "concurrently \"npm run build:dev.watch\" \"npm run lite\" ",
+    "start": "npm run build:vendor && npm run build:dev && concurrently \"npm run build:dev.watch\" \"npm run lite\" ",
     "build:vendor": "gulp vendor",
     "build:production": "gulp clean && gulp build && gulp compress",
     "build:production.bundle": "gulp build --production && node systemjs.builder.js && gulp compress",

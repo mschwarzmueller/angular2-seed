@@ -7,5 +7,5 @@ import { Component } from "@angular/core";
     styleUrls: ['other.styles.css']
 })
 export class OtherComponent {
-   
+    x = "find this";
 }

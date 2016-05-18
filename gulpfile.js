@@ -36,9 +36,9 @@ gulp.task('build-css', function () {
 
 gulp.task('build-ts', function () {
     return gulp.src(src + 'app/**/*.ts')
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(!args.production, sourcemaps.init()))
         .pipe(typescript(tsProject))
-        .pipe(sourcemaps.write())
+        .pipe(gulpif(!args.production, sourcemaps.write()))
         .pipe(gulp.dest(dist + 'app'));
 });
 

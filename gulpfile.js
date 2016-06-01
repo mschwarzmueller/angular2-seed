@@ -30,8 +30,7 @@ gulp.task('build-css', function () {
             cascade: false
         }))
         .pipe(gulpif(args.production, cssClean({compatibility: 'ie8'})))
-        .pipe(gulpif(args.production, flatten()))
-        .pipe(gulpif(args.production, gulp.dest(dist), gulp.dest(dist + 'app/')));
+        .pipe(gulp.dest(dist + 'app/'));
 });
 
 gulp.task('build-ts', function () {
@@ -45,8 +44,7 @@ gulp.task('build-ts', function () {
 gulp.task('build-copy', function () {
 
     gulp.src([src + 'app/**/*.html', src + 'app/**/*.htm', src + 'app/**/*.css'])
-        .pipe(gulpif(args.production, flatten()))
-        .pipe(gulpif(args.production, gulp.dest(dist), gulp.dest(dist + 'app/')));
+        .pipe(gulp.dest(dist + 'app/'));
 
     gulp.src(src + '/index.html')
         .pipe(gulp.dest(dist));
@@ -60,40 +58,40 @@ gulp.task('clean', function() {
 });
 
 gulp.task('compress', function () {
+    gulp.src(dist + 'vendor/**/*.js')
+        .pipe(gzip())
+        .pipe(gulp.dest(dist + 'vendor/'));
+
     return gulp.src(dist + 'app/**/*.js')
         .pipe(gzip())
         .pipe(gulp.dest(dist + 'app/'));
 });
 
 gulp.task('vendor', function () {
+    del([dist + '/vendor/**/*']);
+    
     // // Angular 2 Framework
     gulp.src('node_modules/@angular/**')
-        .pipe(gzip())
         .pipe(gulp.dest(dist + '/vendor/@angular'));
 
     //ES6 Shim
     gulp.src('node_modules/es6-shim/**')
-        .pipe(gzip())
         .pipe(gulp.dest(dist + '/vendor/es6-shim/'));
 
     //reflect metadata
     gulp.src('node_modules/reflect-metadata/**')
-        .pipe(gzip())
         .pipe(gulp.dest(dist + '/vendor/reflect-metadata/'));
 
     //rxjs
     gulp.src('node_modules/rxjs/**')
-        .pipe(gzip())
         .pipe(gulp.dest(dist + '/vendor/rxjs/'));
 
     //systemjs
     gulp.src('node_modules/systemjs/**')
-        .pipe(gzip())
         .pipe(gulp.dest(dist + '/vendor/systemjs/'));
 
     //zonejs
     return gulp.src('node_modules/zone.js/**')
-        .pipe(gzip())
         .pipe(gulp.dest(dist + '/vendor/zone.js/'));
 });
 

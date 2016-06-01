@@ -4,12 +4,12 @@ const del = require('del');
 
 // optional constructor options
 // sets the baseURL and loads the configuration file
-var builder = new Builder('', 'systemjs.config.js');
+var builder = new Builder('dist', 'src/systemjs.config.js');
 
 builder
-    .buildStatic('./dist/app/main.js', './dist/app/main.js', { minify: true})
+    .bundle('app/main.js', './dist/app/main.js', { minify: true, encodeNames: false})
     .then(function() {
-        del(['./dist/app/**/*', '!./dist/app/main.js']).then(function (paths) {
+        del(['./dist/app/**/*.js', '!./dist/app/main.js']).then(function (paths) {
             console.log('Deleted files and folders:\n', paths.join('\n'));
         });
         console.log('Build complete');

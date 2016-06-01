@@ -6,8 +6,10 @@
     "postinstall": "typings install",
     "start": "npm run build:vendor && npm run build:dev && concurrently \"npm run build:dev.watch\" \"npm run lite\" ",
     "build:vendor": "gulp vendor",
-    "build:production": "gulp clean && gulp build && gulp compress",
-    "build:production.bundle": "gulp build --production && node systemjs.builder.js && gulp compress",
+    "build:production": "gulp clean && gulp build",
+    "build:production.compress": "gulp clean && gulp build && gulp compress",
+    "build:production.bundle": "gulp clean && gulp build --production && node systemjs.builder.js",
+    "build:production.bundle.compress": "gulp clean && gulp build --production && node systemjs.builder.js && gulp compress",
     "build:dev": "gulp clean && gulp build",
     "build:dev.watch": "gulp clean && gulp",
     "typings": "typings"

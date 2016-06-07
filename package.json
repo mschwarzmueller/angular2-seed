@@ -5,7 +5,7 @@
     "lite": "lite-server",
     "postinstall": "typings install",
     "gulp": "gulp",
-    "start": "concurrent \"npm run gulp\" \"npm run lite\" ",
+    "start": "concurrently \"npm run gulp\" \"npm run lite\" ",
     "typings": "typings"
   },
   "license": "MIT",

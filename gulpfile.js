@@ -101,7 +101,7 @@ gulp.task('watch', function () {
     gulp.watch(src + '**/*.{html,htm,css}', ['build-copy']);
 });
 
-gulp.task('build', ['vendor', 'build-ts', 'build-css', 'build-copy']);
+gulp.task('build', ['build-ts', 'build-css', 'build-copy']);
 
 
 gulp.task('default', ['build', 'watch']);
